@@ -1,0 +1,46 @@
+.todo-list {
+  margin: auto;
+  list-style: none;
+  width: 526px;
+  background-color: white;
+  padding: 0;
+}
+
+.todo-list {
+  position: relative;
+
+  border-bottom: 1px solid #ededed;
+}
+
+.todo-list .view {
+  margin: 5 10 0 30;
+  display: flex;
+  border-bottom: 1px solid rgb(220, 220, 220);
+  padding: 15px 0 15px 0;
+}
+
+.todo-list .view .toogle {
+  margin: 15px 15px 0px 30px;
+}
+.todo-list .view label {
+  font-size: 26px;
+  margin: 0;
+  padding: 0;
+}
+.todo-list .view .destroy {
+  display: none;
+  margin-top: 3px;
+  font-size: 22px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  margin-left: 25px;
+}
+
+.todo-list .view:hover .destroy {
+  display: block;
+  color: red;
+}
