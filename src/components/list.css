@@ -13,21 +13,39 @@
 }
 
 .todo-list .view {
-  margin: 5 10 0 30;
   display: flex;
   border-bottom: 1px solid rgb(220, 220, 220);
   padding: 15px 0 15px 0;
 }
 
-.todo-list .view .toogle {
-  margin: 15px 15px 0px 30px;
+.todo-list .view .toggle {
+  margin: 7px 15px 0px 20px;
+  width: 2em;
+  height: 2em;
+  background-color: white;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+.todo-list .view .toggle:checked {
+  background-color: green;
 }
 .todo-list .view label {
-  font-size: 26px;
-  margin: 0;
-  padding: 0;
+  line-height: 32px;
+  font-size: 35px;
 }
+.todo-list .view .completed {
+  text-decoration: line-through;
+  color: #a7a1a1;
+}
+
 .todo-list .view .destroy {
+  position: absolute;
+  right: 20px;
   display: none;
   margin-top: 3px;
   font-size: 22px;

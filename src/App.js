@@ -2,42 +2,37 @@ import { useState } from "react";
 import List from "./components/List";
 import "./App.css";
 import Footer from "./components/Footer";
+import InputTodo from "./components/InputTodo";
 
 function App() {
-  const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([
     {
       id: 1,
       name: "a",
+      completed: true,
     },
     {
       id: 2,
       name: "b",
+      completed: true,
     },
     {
       id: 3,
       name: "c",
+      completed: false,
     },
     {
       id: 4,
       name: "d",
+      completed: true,
     },
   ]);
-
-  const handleInput = (e) => {
-    if (e.key === "Enter") {
-      if (!e.target.value) {
-        alert("empty");
-        return;
-      }
-
-      let todoNew = {
-        id: Math.floor(Math.random() * 100000 + 1),
-        name: todo,
-      };
-      setTodos((prev) => [...prev, todoNew]);
-      setTodo("");
-    }
+  const updateCompleted = (id) => {
+    const todoUpdate = todos.map((todo) =>
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    );
+    // console.log(todoUpdate);
+    setTodos(todoUpdate);
   };
 
   const handleDeleteTodo = (id) => {
@@ -46,19 +41,20 @@ function App() {
     setTodos(currentTodos);
   };
 
+  const filterTodosLeft = (todos) => {
+    return todos.filter((item) => !item.completed);
+  };
+
   return (
     <div className="App">
       <h1 className="title"> todos</h1>
-      <input
-        value={todo}
-        onChange={(e) => setTodo(e.target.value)}
-        className="input-todo"
-        type="text"
-        placeholder="What needs to be done?"
-        onKeyPress={(e) => handleInput(e)}
+      <InputTodo todos={todos} setTodos={setTodos} />
+      <List
+        updateCompleted={updateCompleted}
+        handleDeleteTodo={handleDeleteTodo}
+        todos={todos}
       />
-      <List handleDeleteTodo={handleDeleteTodo} todos={todos} />
-      <Footer todos={todos} />
+      <Footer numOfTodosLeft={filterTodosLeft(todos).length} todos={todos} />
     </div>
   );
 }
