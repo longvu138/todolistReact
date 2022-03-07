@@ -1,8 +1,9 @@
 import React from "react";
 import "./footer.css";
-
+import { Link } from "react-router-dom";
 function Footer(props) {
-  const { numOfTodosLeft, todos } = props;
+  const { numOfTodosLeft, clearCompleted, todos } = props;
+
   return (
     <>
       {todos && todos.length > 0 && (
@@ -15,17 +16,24 @@ function Footer(props) {
           </span>
           <ul className="filters">
             <li>
-              {/* <a href="#/" 
-         className={`${activeButton === 'ALL' ? "selected" : ''}`}
-         onClick={() => setStatusFilter('ALL')}
-         >All</a> */}
+              <Link to="/">All</Link>
             </li>
             <li>
-              <a href="#/active">Active</a>
+              <Link to="/active">Active</Link>
             </li>
             <li>
-              <a href="#c">Completed</a>
+              <Link to="/completed">Completed</Link>
             </li>
+
+            {numOfTodosLeft < todos.length && (
+              <a
+                href="#/clear"
+                className="clear-completed"
+                onClick={clearCompleted}
+              >
+                Clear completed
+              </a>
+            )}
           </ul>
         </footer>
       )}

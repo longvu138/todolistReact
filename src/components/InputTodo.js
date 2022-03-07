@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./InputTodo.css";
-const InputTodo = ({ setTodos, todos }) => {
+const InputTodo = (props) => {
+  const { setTodos, todos, checkTodos } = props;
+
   const [todo, setTodo] = useState("");
 
   const handleInput = (e) => {
@@ -25,6 +27,7 @@ const InputTodo = ({ setTodos, todos }) => {
       <label className="toggle-all">
         {todos && todos.length > 0 && (
           <img
+            onClick={checkTodos}
             alt="down-all"
             src={require("./assets/icondown.png")}
             width="40"

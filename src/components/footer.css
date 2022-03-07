@@ -32,3 +32,15 @@
 .filters li a.selected {
   border-color: rgba(175, 47, 47, 0.2);
 }
+
+.clear-completed {
+  color: black;
+  margin-left: 25px;
+  text-decoration: none;
+}
+
+.clear-completed:hover {
+  color: black;
+  margin-left: 25px;
+  text-decoration: underline;
+}

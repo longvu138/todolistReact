@@ -1,32 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import "./list.css";
+import Todo from "./Todo";
 const List = (props) => {
-  const { todos, handleDeleteTodo, updateCompleted } = props;
-  const handleDelete = (id) => {
-    handleDeleteTodo(id);
-  };
-  const handleCompleted = (id) => {
-    updateCompleted(id);
-  };
+  const { todos, handleDeleteTodo, updateCompleted, setTodos } = props;
 
   return (
     <div className="todo-list">
       {todos.map((todo) => {
+        const id = todo.id;
         return (
-          <div key={todo.id} className="view">
-            <input
-              onClick={() => handleCompleted(todo.id)}
-              className="toggle"
-              type="checkbox"
-              defaultChecked={todo.completed}
-            ></input>
-            <label className={todo.completed ? "completed" : ""}>
-              {todo.name}
-            </label>
-            <span onClick={() => handleDelete(todo.id)} className="destroy">
-              x
-            </span>
-          </div>
+          <Todo
+            handleDeleteTodo={handleDeleteTodo}
+            updateCompleted={updateCompleted}
+            setTodos={setTodos}
+            todos={todos}
+            todo={todo}
+            key={id}
+          />
         );
       })}
     </div>
